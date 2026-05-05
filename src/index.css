@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    background-color: #000;
+    color: #fff;
+    font-family: var(--font-sans);
+  }
+
+  /* Brutalist components */
+  .brutal-border {
+    border: 2px solid #fff;
+  }
+
+  .brutal-card {
+    background-color: #000;
+    border: 2px solid #fff;
+    padding: 1.5rem;
+  }
+
+  .brutal-button {
+    background-color: #fff;
+    color: #000;
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.1s ease;
+    border: 2px solid #fff;
+  }
+
+  .brutal-button:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .brutal-input {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 0.75rem;
+    width: 100%;
+  }
+
+  .brutal-input:focus {
+    outline: none;
+    background-color: #111;
+  }
+
+  /* Custom Scrollbar for Bento Grid */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #000;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #fff;
+  }
+}
+

@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "JournalEntry": {
+      "title": "Journal Entry",
+      "description": "A record of a user's daily action and its ethical context.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The Firebase Auth UID of the user." },
+        "action": { "type": "string", "description": "The description of the action taken." },
+        "category": { "type": "string", "description": "The ethical category of the action (e.g., consumption, social, environmental)." },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the action was recorded." },
+        "critique": { "type": "string", "description": "The Gemini-generated brutal critique." }
+      },
+      "required": ["uid", "action", "timestamp"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "User's personal values and identity.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The Firebase Auth UID." },
+        "displayName": { "type": "string" },
+        "values": { 
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of core personal values."
+        }
+      },
+      "required": ["uid"]
+    },
+    "SlowBurnIssue": {
+      "title": "Slow-Burn Social Issue",
+      "description": "Structural issues that are often ignored in the short term.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "urgency": { "type": "string", "enum": ["low", "medium", "high"] }
+      }
+    }
+  },
+  "firestore": {
+    "/journal/{entryId}": {
+      "schema": "JournalEntry",
+      "description": "Users' daily action logs."
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Storage for user values and profiles."
+    },
+    "/memoryVault/{issueId}": {
+      "schema": "SlowBurnIssue",
+      "description": "Public repository of slow-burn social issues."
+    }
+  }
+}
